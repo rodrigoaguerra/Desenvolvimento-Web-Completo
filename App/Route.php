@@ -11,18 +11,17 @@ class Route extends Bootstrap
     $routes['home'] = array(
       'route' => '/',
       'controller' => 'IndexController',
-      'action' => 'index' 
+      'action' => 'index'
     );
 
     $routes['sobre_nos'] = array(
       'route' => '/sobre_nos',
       'controller' => 'IndexController',
-      'action' => 'sobreNos' 
+      'action' => 'sobreNos'
     );
 
     $this->setRoutes($routes);
   }
 }
-
 
 ?>
