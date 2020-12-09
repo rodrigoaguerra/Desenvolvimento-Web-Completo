@@ -1,3 +1,7 @@
+<?php
+	$acao = "recuperar";
+	require_once "tarefa_controller.php";
+?>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -7,6 +11,36 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<script>
+			function editar(id, text) {
+				let form = document.createElement('form');
+				form.action = "tarefa_controller.php?acao=atualizar";
+				form.method = "post";
+				form.className = "row";
+				let input = document.createElement('input');
+				input.type = "text";
+				input.name = "tarefa";
+				input.value = text;
+				input.className = "col-9 form-control";
+				let inputId = document.createElement('input');
+				inputId.type = "hidden";
+				inputId.name = "id";
+				inputId.value = id;
+				let button = document.createElement('button');
+				button.type = "submit";
+				button.className = "col-3 btn btn-info";
+				button.innerHTML = 'atualizar';
+
+				form.appendChild(input);
+				form.appendChild(inputId);
+				form.appendChild(button);
+
+				let tarefa = document.getElementById('tarefa_'+id);
+				tarefa.innerHTML = "";
+				tarefa.insertBefore(form, tarefa[0]);
+
+			}
+		</script>
 	</head>
 
 	<body>
@@ -35,25 +69,18 @@
 							<div class="col">
 								<h4>Todas tarefas</h4>
 								<hr />
-
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Lavar o carro (status)</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
+								<?php foreach ($tarefas as $key => $tarefa) { ?>
+									<div class="row mb-3 d-flex align-items-center tarefa">
+										<div id="tarefa_<?= $tarefa->id ?>" class="col-sm-9">
+											<?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
+										</div>
+										<div class="col-sm-3 mt-2 d-flex justify-content-between">
+											<i class="fas fa-trash-alt fa-lg text-danger"></i>
+											<i onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')" class="fas fa-edit fa-lg text-info"></i>
+											<i class="fas fa-check-square fa-lg text-success"></i>
+										</div>
 									</div>
-								</div>
-
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Passear com o cachorro (status)</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
-									</div>
-								</div>
-								
+								<?php } ?>
 							</div>
 						</div>
 					</div>
