@@ -38,8 +38,16 @@
 				let tarefa = document.getElementById('tarefa_'+id);
 				tarefa.innerHTML = "";
 				tarefa.insertBefore(form, tarefa[0]);
-
 			}
+
+			function remover(_id) {
+				location.href = "todas_tarefas.php?acao=remover&id="+ _id;
+			}
+
+			function marcarRealizada(_id) {
+				location.href = "todas_tarefas.php?acao=marcarRealizada&id="+ _id;
+			}
+
 		</script>
 	</head>
 
@@ -75,10 +83,12 @@
 											<?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')" class="fas fa-edit fa-lg text-info"></i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
-										</div>
+												<i onclick="remover(<?= $tarefa->id ?>)" class="fas fa-trash-alt fa-lg text-danger"></i>
+											<?php if($tarefa->status == 'pendente') { ?>
+												<i onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')" class="fas fa-edit fa-lg text-info"></i>
+												<i onclick="marcarRealizada(<?= $tarefa->id ?>)" class="fas fa-check-square fa-lg text-success"></i>
+											<?php } ?>
+											</div>
 									</div>
 								<?php } ?>
 							</div>
