@@ -6,7 +6,7 @@ namespace App\Application\Actions\Produtos;
 use Psr\Http\Message\ResponseInterface as Response;
 use Models\Produto;
 
-class ViewProdutosAction extends ProdutosAction
+class DeleteProdutosAction extends ProdutosAction
 {
     /**
      * {@inheritdoc}
@@ -15,6 +15,7 @@ class ViewProdutosAction extends ProdutosAction
     {
         $produtoId = (int) $this->resolveArg('id');
         $produto = Produto::findOrFail($produtoId);
+        $produto->delete();
         return $this->respondWithData($produto);
     }
 }

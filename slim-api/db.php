@@ -42,7 +42,7 @@ $schema->create($table, function($tb) {
   $tb->text('descricao');
   $tb->decimal('preco', 11, 2);
   $tb->string('fabricante', 60);
-  $tb->date('dt_criacao');
+  $tb->timestamps();
 });
 
 $db->table($table)->insert([
@@ -50,7 +50,8 @@ $db->table($table)->insert([
   'descricao' => 'Super top o melhor do melhor do mundo',
   'preco' => 8811.00,
   'fabricante' => 'Chain na tal',
-  'dt_criacao' => '2019-02-07',
+  'created_at' => '2020-10-22',
+  'updated_at' => '2020-10-22',
 ]);
 
 $db->table($table)->insert([
@@ -58,5 +59,6 @@ $db->table($table)->insert([
   'descricao' => 'Super2 top o melhor do melhor do mundo',
   'preco' => 8812.00,
   'fabricante' => 'Chain na tal',
-  'dt_criacao' => '2019-02-07',
+  'created_at' => '2020-10-01',
+  'updated_at' => '2020-10-01',
 ]);

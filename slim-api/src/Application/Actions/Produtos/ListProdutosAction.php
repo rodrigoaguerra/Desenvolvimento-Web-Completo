@@ -6,15 +6,15 @@ namespace App\Application\Actions\Produtos;
 use Psr\Http\Message\ResponseInterface as Response;
 use Models\Produto;
 
-class ViewProdutosAction extends ProdutosAction
+class ListProdutosAction extends ProdutosAction
 {
     /**
      * {@inheritdoc}
      */
     protected function action(): Response
     {
-        $produtoId = (int) $this->resolveArg('id');
-        $produto = Produto::findOrFail($produtoId);
-        return $this->respondWithData($produto);
+        $produtos = Produto::get();
+
+        return $this->respondWithData($produtos);
     }
 }
