@@ -29,7 +29,8 @@ return function (ContainerBuilder $containerBuilder) {
                     'charset' => 'utf8',
                     'collation' => 'utf8_unicode_ci',
                     'prefix' => '',
-                ]
+                ],
+                'secretKey' => 'b439f3b0bab767d14926cd7255318d9a3e1477bc',
             ]);
         }
     ]);

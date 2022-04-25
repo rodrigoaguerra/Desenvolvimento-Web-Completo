@@ -32,6 +32,25 @@ $callableResolver = $app->getCallableResolver();
 $db = $container->get('db');
 
 $schema = $db->schema();
+
+$table =  'usuarios';
+
+$schema->dropIfExists($table);
+
+$schema->create($table, function($tb) {
+  $tb->increments('id');
+  $tb->string('nome', 100);
+  $tb->string('email', 150);
+  $tb->string('senha', 32);
+  $tb->timestamps();
+});
+
+$db->table($table)->insert([
+  'nome' => 'Rodrigo Alves Guerra',
+  'email' => 'rodrigoa.guerra@hotmail.com',
+  'senha' =>  md5('12345678'),
+]);
+
 $table =  'produtos';
 
 $schema->dropIfExists($table);
