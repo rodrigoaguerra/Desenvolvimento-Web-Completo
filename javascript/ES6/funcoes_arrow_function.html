@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        
+        <!-- Your custom script here -->
+        <script type="text/babel">
+            
+            // let quadrado = function(x = 5) {
+            //     return x * x;
+            // }
+
+            // let quadrado = (x) => {
+            //     return x * x;
+            // }
+
+            // let quadrado = x => x * x; // returno implicito
+
+            // document.write( quadrado(3) );
+
+            let parOuImpar = numero => numero % 2 === 0 ? 'par' : 'impar'; // returno implicito
+
+            document.write(parOuImpar(5));
+        </script>
+    </head>
+    <body>
+        <div id="output"></div>
+    </body>
+</html>
