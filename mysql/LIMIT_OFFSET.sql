@@ -1,0 +1,6 @@
+SELECT
+	*
+FROM 
+	tb_alunos
+LIMIT 4
+OFFSET 8;
