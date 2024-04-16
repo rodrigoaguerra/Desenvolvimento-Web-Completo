@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <button id="btnSaudacao">Saudação</button>
+        <hr>
+        <input type="text" id="cep" placeholder="CEP">
+        <button id="btnCep">Consultar CEP</button>
+    </body>
+    <script type="module">
+        // estatico caregando o modulo antes da necessidade de utiliza-la
+        // import { saudacao, getEnderecoByCep } from './import/lib.mjs';
+
+        document.querySelector('#btnSaudacao').addEventListener('click', () => {
+            import('./import/lib.mjs')
+                .then(({ saudacao }) => {
+                    console.log(saudacao());
+                });
+        });
+
+        document.querySelector('#btnCEP').addEventListener('click', () => {
+            let cep = document.querySelector('#cep').value;
+
+            if(cep.length === 8) {
+
+                import('./import/lib2.mjs')
+                .then(({ getEnderecoByCep }) => {
+                    getEnderecoByCep(cep)
+                        .then(console.log);
+                });
+            }
+        
+        });
+             
+    </script>
+</html>

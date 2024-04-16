@@ -1,0 +1,33 @@
+<html>
+    <body>
+    </body>
+    <script>
+        // testando com o operador lógico OR
+        let teste1 = null || 'valor a direita';
+        let teste2 = 0 || 'valor a direita';
+        let teste3 = undefined || 'valor a direita';
+        let teste4 = '' || 'valor a direita';
+        let teste5 = 'valor a esquerda' || 'valor a direita';
+
+        console.log('teste1: ', teste1);
+        console.log('teste2: ', teste2);
+        console.log('teste3: ', teste3);
+        console.log('teste4: ', teste4);
+        console.log('teste5: ', teste5);
+
+        console.log('---------------------------');
+
+          // testando com o operador lógico OR
+        teste1 = null ?? 'valor a direita';
+        teste2 = 0 ?? 'valor a direita'; // utilizável
+        teste3 = undefined ?? 'valor a direita';
+        teste4 = '' ?? 'valor a direita'; // utilizável
+        teste5 = 'valor a esquerda' ?? 'valor a direita';
+
+        console.log('teste1: ', teste1);
+        console.log('teste2: ', teste2);
+        console.log('teste3: ', teste3);
+        console.log('teste4: ', teste4);
+        console.log('teste5: ', teste5);
+    </script>
+</html>
